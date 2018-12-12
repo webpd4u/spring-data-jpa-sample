@@ -1,12 +1,16 @@
 package com.example.springdatajpasample.controller;
 
-class DataNotFoundException extends RuntimeException {
+public class DataNotFoundException extends RuntimeException {
 
-	DataNotFoundException(Long id) {
+	public DataNotFoundException(Long id) {
 		super("Could not find data " + id);
 	}
 
-	DataNotFoundException(Integer id) {
+	public DataNotFoundException(Integer id) {
 		super("Could not find data " + id);
+	}
+
+	public DataNotFoundException(String number) {
+		super("Could not find data " + number);
 	}
 }
