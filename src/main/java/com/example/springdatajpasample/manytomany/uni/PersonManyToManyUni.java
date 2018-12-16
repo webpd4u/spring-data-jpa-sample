@@ -9,8 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import org.apache.tomcat.jni.Address;
+import lombok.Data;
 
+@Data
 @Entity(name = "PersonManyToManyUni")
 public class PersonManyToManyUni {
 
@@ -19,7 +20,7 @@ public class PersonManyToManyUni {
 	private Long id;
 
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	private List<Address> addresses = new ArrayList<>();
+	private List<AddressManyToManyUni> addresses = new ArrayList<>();
 
 	//Getters and setters are omitted for brevity
 

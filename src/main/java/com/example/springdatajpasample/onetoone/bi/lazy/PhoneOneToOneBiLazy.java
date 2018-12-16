@@ -27,7 +27,7 @@ public class PhoneOneToOneBiLazy {
 	private String number;
 
 	@OneToOne(
-			mappedBy = "PhoneOneToOneBiLazy",
+			mappedBy = "phoneOneToOneBiLazy",
 			cascade = CascadeType.ALL,
 			orphanRemoval = true,
 			fetch = FetchType.LAZY

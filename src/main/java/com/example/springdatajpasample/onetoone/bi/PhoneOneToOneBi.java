@@ -24,7 +24,7 @@ public class PhoneOneToOneBi {
 	private String number;
 
 	@OneToOne(
-			mappedBy = "PhoneOneToOneBi",
+			mappedBy = "phoneOneToOneBi",
 			cascade = CascadeType.ALL,
 			orphanRemoval = true,
 			fetch = FetchType.LAZY

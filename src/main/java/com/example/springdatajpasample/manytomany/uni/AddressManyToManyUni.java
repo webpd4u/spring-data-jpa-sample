@@ -5,17 +5,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity(name = "Address")
-public class AddressManyToManyUni {
+import lombok.Data;
 
+@Data
+@Entity(name = "AddressManyToManyUni")
+public class AddressManyToManyUni {
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	private String street;
 
-	@Column(name = "`number`")
+	@Column(name = "number")
 	private String number;
+	
+	public AddressManyToManyUni(String street, String number) {
+		this.street = street;
+		this.number = number;
+	}
 
 	//Getters and setters are omitted for brevity
 
