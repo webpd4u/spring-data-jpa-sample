@@ -22,7 +22,7 @@ class PhoneControllerOneToManyBi {
 		this.repository = repository;
 	}
 
-	@GetMapping("/phones/oto/{number}")
+	@GetMapping("/phones/oto-bi/{number}")
 	PhoneOneToManyUni one(@PathVariable String number) {
 
 		return repository.findByNumber(number).orElseThrow(() -> new DataNotFoundException(number));
