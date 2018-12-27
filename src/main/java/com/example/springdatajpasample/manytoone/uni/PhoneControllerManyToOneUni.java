@@ -1,6 +1,7 @@
 package com.example.springdatajpasample.manytoone.uni;
 
-import org.springframework.context.annotation.Profile;
+import java.util.Optional;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,16 +15,23 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 class PhoneControllerManyToOneUni {
 
-	private final PhoneRepositoryManyToOneUni repository;
+	private final PhoneServiceManyToOneUni service;
 
-	PhoneControllerManyToOneUni(PhoneRepositoryManyToOneUni repository) {
-		this.repository = repository;
+	PhoneControllerManyToOneUni(PhoneServiceManyToOneUni service) {
+		this.service = service;
 	}
 
 	@GetMapping("/phones/{number}")
 	PhoneManyToOneUni one(@PathVariable String number) {
 
-		return repository.findByNumber(number).orElseThrow(() -> new DataNotFoundException(number));
-
+//		return repository.findByNumber(number).orElseThrow(() -> new DataNotFoundException(number));
+		Optional<PhoneManyToOneUni> optional = service.search(number);
+		
+		if(optional.isPresent()) {
+			return optional.get();
+		}else {
+			throw new DataNotFoundException(number);
+		}
+		
 	}
 }
